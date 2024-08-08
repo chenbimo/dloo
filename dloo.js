@@ -1,81 +1,55 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
-import got from 'got';
 import pacote from 'pacote';
-import logSymbols from 'log-symbols';
-import { select, input } from '@inquirer/prompts';
+import { cli4state } from 'cli4state';
+import { minimist } from './minimist.js';
 
-// 仓库地址配置
-const registryConfig = {
-    'npmmirror.com': 'https://registry.npmmirror.com',
-    'npmjs.com': 'https://registry.npmjs.com'
-};
+// 模板列表
+const templateLists = [
+    {
+        name: 'funpi 接口项目开发模板',
+        value: 'funpiba'
+    },
+    {
+        name: 'yibase 基础项目开发模板',
+        value: 'yibase'
+    },
+    {
+        name: 'yiadmin 后台项目开发模板',
+        value: 'yiadmin'
+    },
+    {
+        name: 'yiuni 小程序项目开发模板',
+        value: 'yiuni'
+    },
+    {
+        name: 'yidocs 易文档基础模板',
+        value: 'yidocs'
+    }
+];
+const templateNames = templateLists.map((item) => item.value);
+const registry = 'https://registry.npmmirror.com';
+const dd = 1;
 
 async function main() {
+    console.log(cli4state.info, '开发者：陈随易（https://chensuiyi.me）');
+    console.log('-----------------------------------------');
+
     try {
-        const promptData = {};
-
-        console.log(logSymbols.info, '开发者：陈随易（https://chensuiyi.me）');
-        console.log('-----------------------------------------');
-
-        // 从哪里下载
-        promptData.registry = await select({
-            message: '选择从哪里下载',
-            default: 'npmmirror.com',
-            choices: [
-                {
-                    name: '淘宝仓库 - npmmirror.com',
-                    value: 'npmmirror.com'
-                },
-                {
-                    name: '官方仓库 - npmjs.com',
-                    value: 'npmjs.com'
-                }
-            ]
-        });
-
-        // 下载什么内容
-        promptData.template = await select({
-            message: '选择要下载的包',
-            default: 'yibase',
-            choices: [
-                {
-                    name: 'yiapi 接口开发模板',
-                    value: 'yiserver'
-                },
-                {
-                    name: 'yibase 基础项目开发模板',
-                    value: 'yibase'
-                },
-                {
-                    name: 'yiadmin 后台项目开发模板',
-                    value: 'yiadmin'
-                },
-                {
-                    name: 'yiuni 小程序项目开发模板',
-                    value: 'yiuni'
-                },
-                {
-                    name: 'yidocs 易文档基础模板',
-                    value: 'yidocs'
-                }
-            ]
-        });
-
-        // 下载什么版本
-        promptData.version = await input({
-            message: '输入要下载的版本（默认下载最新版本）',
-            default: 'latest'
-        });
-
-        try {
-            const metaData = await got.get(`${registryConfig[promptData.registry]}/${promptData.template}/${promptData.version}`).json();
-            const downMeta = await pacote.extract(metaData.dist.tarball, './dloo-package', {});
-            console.log(logSymbols.success, '资源已下载到默认的 dloo-package 目录，请移动到正确的目录!');
-        } catch (error) {
-            console.log(logSymbols.error, '资源错误或不存在，请检查包名或版本是否正确!');
+        const options = minimist(process.argv.slice(2));
+        const teimplateInfo = templateLists.find((item) => item.value === options.t);
+        if (!teimplateInfo) {
+            console.log(cli4state.error, `模板名称错误，请指定 ${templateNames} 模板之一`);
         }
-    } catch (err) {}
+        const version = options.v ? options.v : 'latest';
+        console.log(cli4state.info, teimplateInfo.name + '下载中...');
+        const fetchData = await fetch(`${registry}/${options.t}/${version}`);
+        const metaData = await fetchData.json();
+        const downMeta = await pacote.extract(metaData.dist.tarball, './.dloo', {});
+        console.log(cli4state.success, '资源已下载到默认的 .dloo 目录，请移动到正确的目录!');
+    } catch (err) {
+        console.log(cli4state.error, '资源错误或不存在，请检查版本是否正确');
+    }
 }
 
 main();

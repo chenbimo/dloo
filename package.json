@@ -1,19 +1,15 @@
 {
     "name": "dloo",
-    "version": "1.5.0",
-    "description": "dloo - yicode官方npm模板下载工具",
+    "version": "2.0.0",
+    "description": "dloo - 陈随易官方NPM项目模板下载工具",
     "author": "chensuiyi <bimostyle@qq.com>",
     "bin": {
-        "dloo": "dloo.js"
+        "dloo": "./dloo.js"
     },
+    "main": "./dloo.js",
     "type": "module",
     "homepage": "https://chensuiyi.me",
-    "scripts": {
-        "lint": "eslint .",
-        "fix": "eslint . --fix",
-        "format": "prettier --write .",
-        "inspect": "eslint --inspect-config"
-    },
+    "scripts": {},
     "engines": {},
     "keywords": [
         "npm",
@@ -26,40 +22,18 @@
         "access": "public",
         "registry": "https://registry.npmjs.org"
     },
-    "main": "dloo.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/chenbimo/yicode.git"
+        "url": "https://github.com/chenbimo/dloo.git"
     },
     "files": [
-        "readme.md",
+        "README.md",
         "package.json",
         "LICENSE",
-        "dloo.js",
-        ".npmrc",
-        ".gitignore"
+        "dloo.js"
     ],
     "dependencies": {
-        "@inquirer/prompts": "^5.3.4",
-        "got": "^14.4.2",
-        "log-symbols": "^6.0.0",
+        "cli4state": "^1.0.1",
         "pacote": "^18.0.6"
-    },
-    "devDependencies": {
-        "@eslint/config-inspector": "^0.5.2",
-        "@eslint/js": "^9.8.0",
-        "eslint": "^9.8.0",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-prettier": "^5.2.1",
-        "globals": "^15.9.0",
-        "lint-staged": "^15.2.7",
-        "prettier": "^3.3.3",
-        "simple-git-hooks": "^2.11.1"
-    },
-    "simple-git-hooks": {
-        "pre-commit": "pnpm lint-staged"
-    },
-    "lint-staged": {
-        "*.{js,css,scss,less,ts,jsx,vue,html,json,md,yaml}": "prettier --write"
     }
 }
