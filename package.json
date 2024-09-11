@@ -1,6 +1,6 @@
 {
     "name": "dloo",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "dloo - 陈随易官方NPM项目模板下载工具",
     "author": "chensuiyi <bimostyle@qq.com>",
     "bin": {
@@ -30,6 +30,7 @@
         "README.md",
         "package.json",
         "LICENSE",
+        "minimist.js",
         "dloo.js"
     ],
     "dependencies": {

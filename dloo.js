@@ -7,7 +7,7 @@ import { minimist } from './minimist.js';
 // 模板列表
 const templateLists = [
     {
-        name: 'funpi 接口项目开发模板',
+        name: 'funpiba 接口项目开发模板',
         value: 'funpiba'
     },
     {
