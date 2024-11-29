@@ -4,7 +4,6 @@ import fs from 'node:fs';
 import pacote from 'pacote';
 import { minimist } from './utils/minimist.js';
 import { log4state } from './utils/index.js';
-import packageJson from './package.json' with { type: 'json' };
 
 async function main() {
     try {
@@ -17,6 +16,7 @@ async function main() {
             const downMeta = await pacote.extract(metaData.dist.tarball, './.dloo', {});
             console.log(log4state('success'), '资源已下载到默认的 [.dloo] 目录，请移动到正确的目录!');
         } else {
+            const { default: packageJson } = await import('./package.json', { with: { type: 'json' } });
             console.log(
                 log4state('info'),
                 `当前 dloo 版本为 ${packageJson.version}
