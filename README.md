@@ -34,6 +34,8 @@ pnpm update -g dloo
 -   `-v 版本`，默认值 `latest`
 
 ```bash
+# 打印版本
+dloo # 回车
 # 下载 yibase 包
 dloo -t yibase
 # 下载 @funpi/api 包的 7.2.0 版本
