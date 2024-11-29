@@ -1,6 +1,6 @@
 {
     "name": "dloo",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "description": "dloo - NPM包下载工具",
     "author": "chensuiyi <bimostyle@qq.com>",
     "bin": {

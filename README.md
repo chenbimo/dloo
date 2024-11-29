@@ -11,7 +11,7 @@
 
 ### 安装
 
-**全局安装**
+👉 全局安装
 
 ```bash
 npm install -g dloo
@@ -19,7 +19,7 @@ npm install -g dloo
 pnpm add -g dloo
 ```
 
-**升级版本**
+👉 升级版本
 
 ```bash
 npm update -g dloo
