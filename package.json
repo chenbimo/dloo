@@ -1,7 +1,7 @@
 {
     "name": "dloo",
-    "version": "2.0.1",
-    "description": "dloo - 陈随易官方NPM项目模板下载工具",
+    "version": "2.1.0",
+    "description": "dloo - NPM包下载工具",
     "author": "chensuiyi <bimostyle@qq.com>",
     "bin": {
         "dloo": "./dloo.js"
@@ -27,14 +27,13 @@
         "url": "https://github.com/chenbimo/dloo.git"
     },
     "files": [
+        "utils/",
         "README.md",
         "package.json",
         "LICENSE",
-        "minimist.js",
         "dloo.js"
     ],
     "dependencies": {
-        "cli4state": "^1.0.1",
-        "pacote": "^18.0.6"
+        "pacote": "^21.0.0"
     }
 }
