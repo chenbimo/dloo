@@ -9,24 +9,36 @@
 
 结合起来就是，带着眼镜下载。
 
+### 安装
+
+**全局安装**
+
+```bash
+npm install -g dloo
+# 或
+pnpm add -g dloo
+```
+
+**升级版本**
+
+```bash
+npm update -g dloo
+# 或
+pnpm update -g dloo
+```
+
 ### 使用
 
-如果你使用的是 `npm`：
-
-```bash
-npx dloo -t yibase
-```
-
-如果你使用的是 `pnpm`：
-
-```bash
-pnpm dlx dloo -t yibase
-```
-
-### 指令
-
--   `-t npm包名称`
+-   `-r 仓库地址`，默认值 `https://registry.npmmirror.com`
+-   `-n npm包名称`，如 `yibase`、`@funpi/api`
 -   `-v 版本`，默认值 `latest`
+
+```bash
+# 下载 yibase 包
+dloo -t yibase
+# 下载 @funpi/api 包的 7.2.0 版本
+dloo -t @funpi/api -v 7.2.0
+```
 
 ### 注意
 

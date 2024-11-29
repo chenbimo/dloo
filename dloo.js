@@ -8,9 +8,13 @@ const registry = 'https://registry.npmmirror.com';
 async function main() {
     try {
         const options = minimist(process.argv.slice(2));
+        if (!options.n) {
+            console.log(log4state('error'), '请输入 -n 参数，指定要下载的包名');
+            return;
+        }
         const version = options.v ? options.v : 'latest';
-        console.log(log4state('info'), options.t + ' 下载中...');
-        const fetchData = await fetch(`${registry}/${options.t}/${version}`);
+        console.log(log4state('info'), options.n + ' 下载中...');
+        const fetchData = await fetch(`${options.r ?? registry}/${options.n}/${version}`);
         const metaData = await fetchData.json();
         const downMeta = await pacote.extract(metaData.dist.tarball, './.dloo', {});
         console.log(log4state('success'), '资源已下载到默认的 [.dloo] 目录，请移动到正确的目录!');
