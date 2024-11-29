@@ -2,6 +2,13 @@
 
 作者：[陈随易 https://chensuiyi.me](https://chensuiyi.me)
 
+### 名称
+
+-   `dl` = `download` 下载。
+-   `oo` = `一幅眼镜` 查找。
+
+结合起来就是，带着眼镜下载。
+
 ### 使用
 
 如果你使用的是 `npm`：
