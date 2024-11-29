@@ -23,6 +23,7 @@ others/softs
 other.md
 *lock*
 .dloo
+.npmrc
 
 # Editor directories and files
 .vscode/*
