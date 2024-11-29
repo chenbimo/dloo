@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import pacote from 'pacote';
-import { cli4state } from 'cli4state';
 import { minimist } from './utils/minimist.js';
 import { log4state } from './utils/index.js';
 const registry = 'https://registry.npmmirror.com';
