@@ -17,11 +17,8 @@ async function main() {
             console.log(log4state('success'), '资源已下载到默认的 [.dloo] 目录，请移动到正确的目录!');
         } else {
             const { default: packageJson } = await import('./package.json', { with: { type: 'json' } });
-            console.log(
-                log4state('info'),
-                `当前 dloo 版本为 ${packageJson.version}
-如需下载 npm 请输入 -n 参数指定要下载的包名`
-            );
+            console.log(log4state('info'), `当前 dloo 版本为 ${packageJson.version}`);
+            console.log(log4state('error'), `请使用 -n 参数指定要下载的包名`);
         }
     } catch (err) {
         console.log(log4state('error'), '资源错误或不存在，请检查 [名称] 或 [版本] 是否正确');
